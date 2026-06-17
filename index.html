@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STRÏDE — Crafted for Motion</title>
+  <meta name="description" content="STRÏDE — Premium handcrafted shoes for the modern individual. Timeless design, uncompromising comfort." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ───── TOKENS ───── */
+    :root {
+      --ink:        #1A1714;
+      --ivory:      #F7F4EE;
+      --warm-mid:   #E8E2D6;
+      --clay:       #B5784A;
+      --clay-light: #D4956A;
+      --muted:      #8A847A;
+      --white:      #FFFFFF;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --r: 2px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--ivory);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ───── NAV ───── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4vw;
+      background: rgba(247, 244, 238, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,23,20,0.08);
+      transition: background 0.3s var(--ease);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--clay); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.4rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--clay); }
+
+    .nav-cta {
+      background: var(--ink) !important;
+      color: var(--ivory) !important;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--r);
+      transition: background 0.2s var(--ease) !important;
+    }
+
+    .nav-cta:hover { background: var(--clay) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--ink);
+      transition: all 0.3s;
+    }
+
+    /* ───── HERO ───── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10rem 4vw 6rem 6vw;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--clay);
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 6vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.04;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--clay);
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 380px;
+      line-height: 1.75;
+      margin-bottom: 2.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--ivory);
+      padding: 0.9rem 2rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: var(--r);
+      transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--clay); transform: translateY(-1px); }
+
+    .btn-ghost {
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: gap 0.2s var(--ease), color 0.2s;
+    }
+
+    .btn-ghost:hover { gap: 0.9rem; color: var(--clay); }
+    .btn-ghost::after { content: '→'; }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      background: var(--warm-mid);
+    }
+
+    /* Shoe SVG illustration area */
+    .hero-svg-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      left: 6vw;
+      display: flex;
+      gap: 3rem;
+    }
+
+    .stat-item { text-align: left; }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    /* ───── MARQUEE ───── */
+    .marquee-strip {
+      background: var(--ink);
+      color: var(--ivory);
+      padding: 0.9rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 28s linear infinite;
+    }
+
+    .marquee-inner span {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0 2.5rem;
+    }
+
+    .marquee-inner span.dot { color: var(--clay); }
+
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ───── SECTION BASE ───── */
+    section { padding: 7rem 6vw; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--clay);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    /* ───── ABOUT ───── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card {
+      background: var(--warm-mid);
+      border-radius: 4px;
+      padding: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 420px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(181,120,74,0.08) 0%, transparent 60%);
+    }
+
+    .about-tag {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--white);
+      padding: 0.5rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-radius: var(--r);
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p strong { color: var(--ink); font-weight: 500; }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .feature-list li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--clay);
+      flex-shrink: 0;
+    }
+
+    /* ───── COLLECTION ───── */
+    #collection { background: var(--ink); }
+    #collection .section-label { color: var(--clay-light); }
+    #collection .section-title { color: var(--ivory); }
+
+    .collection-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .collection-header p {
+      color: rgba(247,244,238,0.55);
+      font-size: 0.9rem;
+      max-width: 320px;
+      line-height: 1.7;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: #221F1C;
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.3s var(--ease);
+      cursor: pointer;
+    }
+
+    .product-card:hover { transform: translateY(-4px); }
+
+    .product-card:nth-child(2) { margin-top: 2.5rem; }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #2C2926;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--clay);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: var(--r);
+    }
+
+    .product-info {
+      padding: 1.4rem 1.6rem 1.8rem;
+    }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ivory);
+      margin-bottom: 0.3rem;
+    }
+
+    .product-sub {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,244,238,0.4);
+      margin-bottom: 1rem;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .product-price {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--clay-light);
+    }
+
+    .product-btn {
+      background: transparent;
+      border: 1px solid rgba(247,244,238,0.2);
+      color: var(--ivory);
+      padding: 0.5rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: var(--r);
+      transition: all 0.2s var(--ease);
+    }
+
+    .product-btn:hover {
+      background: var(--clay);
+      border-color: var(--clay);
+    }
+
+    /* ───── CRAFTSMANSHIP ───── */
+    #craft {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .craft-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 2.5rem;
+    }
+
+    .craft-step {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 1.2rem;
+      padding: 1.6rem 0;
+      border-top: 1px solid var(--warm-mid);
+      transition: all 0.2s;
+    }
+
+    .craft-step:last-child { border-bottom: 1px solid var(--warm-mid); }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--warm-mid);
+      transition: color 0.2s;
+      line-height: 1;
+      padding-top: 0.2rem;
+    }
+
+    .craft-step:hover .step-num { color: var(--clay); }
+
+    .step-content h4 {
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .step-content p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .craft-visual {
+      background: var(--warm-mid);
+      border-radius: 4px;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .craft-quote {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 2.5rem;
+      right: 2.5rem;
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: var(--r);
+    }
+
+    .craft-quote blockquote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .craft-quote cite {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.6rem;
+    }
+
+    /* ───── TESTIMONIALS ───── */
+    #testimonials { background: var(--warm-mid); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testi-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .testi-stars {
+      color: var(--clay);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .testi-text {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ink);
+      line-height: 1.55;
+      margin-bottom: 1.5rem;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .testi-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--warm-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--clay);
+    }
+
+    .testi-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .testi-loc {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ───── NEWSLETTER ───── */
+    #newsletter {
+      background: var(--ink);
+      text-align: center;
+      padding: 6rem 6vw;
+    }
+
+    #newsletter .section-label { color: var(--clay-light); }
+    #newsletter .section-title { color: var(--ivory); margin-bottom: 1rem; }
+
+    #newsletter p {
+      color: rgba(247,244,238,0.55);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 0;
+      max-width: 440px;
+      margin: 0 auto;
+      border-radius: var(--r);
+      overflow: hidden;
+      border: 1px solid rgba(247,244,238,0.15);
+    }
+
+    .email-form input {
+      flex: 1;
+      padding: 0.9rem 1.2rem;
+      background: rgba(247,244,238,0.08);
+      border: none;
+      color: var(--ivory);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .email-form input::placeholder { color: rgba(247,244,238,0.35); }
+
+    .email-form button {
+      background: var(--clay);
+      color: var(--white);
+      border: none;
+      padding: 0.9rem 1.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .email-form button:hover { background: var(--clay-light); }
+
+    /* ───── FOOTER ───── */
+    footer {
+      background: #131110;
+      padding: 4rem 6vw 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand .nav-logo {
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(247,244,238,0.4);
+      line-height: 1.75;
+      max-width: 260px;
+    }
+
+    .footer-col h5 {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(247,244,238,0.35);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .footer-col ul a {
+      font-size: 0.85rem;
+      color: rgba(247,244,238,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--clay-light); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(247,244,238,0.08);
+      padding-top: 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: rgba(247,244,238,0.3);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .social-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(247,244,238,0.4);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover { color: var(--clay-light); }
+
+    /* ───── SCROLL REVEAL ───── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ───── RESPONSIVE ───── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-visual { min-height: 340px; }
+      .hero-content { padding: 8rem 6vw 3rem; }
+      .hero-stats { position: static; margin-top: 2.5rem; padding: 0; }
+      #about, #craft { grid-template-columns: 1fr; gap: 3rem; }
+      .products-grid, .testimonials-grid { grid-template-columns: 1fr; }
+      .product-card:nth-child(2) { margin-top: 0; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .collection-header { flex-direction: column; }
+      section { padding: 4.5rem 5vw; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .marquee-inner { animation: none; }
+      * { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ───── NAV ───── -->
+  <nav>
+    <a href="#" class="nav-logo">STRÏ<span>DE</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">Story</a></li>
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#craft">Craft</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#newsletter" class="nav-cta">Shop Now</a></li>
+    </ul>
+    <div class="hamburger" onclick="this.classList.toggle('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ───── HERO ───── -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-eyebrow">New Season — Autumn/Winter 2026</p>
+      <h1 class="hero-headline">
+        Wear What<br />
+        <em>Moves</em><br />
+        The World
+      </h1>
+      <p class="hero-sub">
+        Handcrafted from full-grain leather and recycled soles. Built for those who walk with intention — and arrive in style.
+      </p>
+      <div class="hero-actions">
+        <a href="#collection" class="btn-primary">Explore Collection</a>
+        <a href="#craft" class="btn-ghost">Our Craft</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">14+</div>
+          <div class="stat-label">Years of craft</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">98%</div>
+          <div class="stat-label">Satisfaction rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">60k</div>
+          <div class="stat-label">Pairs crafted</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-svg-wrap">
+        <!-- Premium shoe illustration -->
+        <svg viewBox="0 0 520 340" width="480" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shadow -->
+          <ellipse cx="260" cy="310" rx="180" ry="18" fill="rgba(26,23,20,0.12)"/>
+
+          <!-- Sole -->
+          <path d="M60 260 Q80 275 260 278 Q420 278 450 260 L440 248 Q320 265 260 265 Q160 265 70 248 Z" fill="#3D3530"/>
+          <path d="M70 248 Q160 265 260 265 Q360 265 440 248 Q380 238 260 242 Q140 238 70 248 Z" fill="#4A3F39"/>
+
+          <!-- Upper body of shoe -->
+          <path d="M80 245 Q90 180 130 155 Q165 132 210 128 L290 130 Q360 130 400 155 Q430 175 440 245 Z" fill="#C8A882"/>
+
+          <!-- Toe box -->
+          <path d="M80 245 Q75 210 100 185 Q130 160 165 150 Q200 142 220 142 L220 200 Q165 198 130 210 Q100 222 85 238 Z" fill="#D4B896"/>
+
+          <!-- Quarter panel -->
+          <path d="M220 142 L290 140 Q340 138 375 155 Q405 170 420 200 L420 245 Q370 238 320 235 L220 240 Z" fill="#BFA07A"/>
+
+          <!-- Tongue -->
+          <path d="M205 128 Q220 120 255 118 Q285 118 300 128 L295 175 Q270 168 235 170 Z" fill="#C8B090"/>
+
+          <!-- Laces -->
+          <line x1="220" y1="138" x2="285" y2="138" stroke="#F7F4EE" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="218" y1="150" x2="284" y2="150" stroke="#F7F4EE" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="220" y1="162" x2="282" y2="162" stroke="#F7F4EE" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="222" y1="174" x2="280" y2="175" stroke="#F7F4EE" stroke-width="2" stroke-linecap="round"/>
+
+          <!-- Lace eyelets left -->
+          <circle cx="220" cy="138" r="4" fill="#8B6B4A"/><circle cx="220" cy="150" r="4" fill="#8B6B4A"/>
+          <circle cx="220" cy="162" r="4" fill="#8B6B4A"/><circle cx="222" cy="174" r="4" fill="#8B6B4A"/>
+          <!-- Lace eyelets right -->
+          <circle cx="284" cy="138" r="4" fill="#8B6B4A"/><circle cx="284" cy="150" r="4" fill="#8B6B4A"/>
+          <circle cx="282" cy="162" r="4" fill="#8B6B4A"/><circle cx="280" cy="174" r="4" fill="#8B6B4A"/>
+
+          <!-- Heel counter -->
+          <path d="M390 180 Q428 195 438 242 L420 245 Q415 205 400 190 Z" fill="#A88C6A"/>
+
+          <!-- Stitching detail -->
+          <path d="M90 235 Q130 215 165 208 Q200 202 220 202" stroke="#8B6B4A" stroke-width="1.2" fill="none" stroke-dasharray="4,3"/>
+          <path d="M420 235 Q395 218 360 210 Q330 204 305 202" stroke="#8B6B4A" stroke-width="1.2" fill="none" stroke-dasharray="4,3"/>
+
+          <!-- Brand mark on side -->
+          <text x="260" y="228" font-family="Georgia,serif" font-style="italic" font-size="14" fill="rgba(139,107,74,0.7)" text-anchor="middle" letter-spacing="3">STRÏDE</text>
+
+          <!-- Accent stripe -->
+          <path d="M310 195 Q350 188 390 188" stroke="#B5784A" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M130 195 Q155 190 175 190" stroke="#B5784A" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── MARQUEE ───── -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>Full-Grain Leather</span><span class="dot">◆</span>
+      <span>Handcrafted in Portugal</span><span class="dot">◆</span>
+      <span>Recycled Rubber Soles</span><span class="dot">◆</span>
+      <span>2-Year Warranty</span><span class="dot">◆</span>
+      <span>Free Resoling After 3 Years</span><span class="dot">◆</span>
+      <span>Carbon-Neutral Shipping</span><span class="dot">◆</span>
+      <span>Full-Grain Leather</span><span class="dot">◆</span>
+      <span>Handcrafted in Portugal</span><span class="dot">◆</span>
+      <span>Recycled Rubber Soles</span><span class="dot">◆</span>
+      <span>2-Year Warranty</span><span class="dot">◆</span>
+      <span>Free Resoling After 3 Years</span><span class="dot">◆</span>
+      <span>Carbon-Neutral Shipping</span><span class="dot">◆</span>
+    </div>
+  </div>
+
+  <!-- ───── ABOUT ───── -->
+  <section id="about">
+    <div class="about-visual reveal">
+      <div class="about-card">
+        <div class="about-tag">Est. 2010 — Porto, Portugal</div>
+        <svg viewBox="0 0 360 280" width="320" xmlns="http://www.w3.org/2000/svg">
+          <!-- Boot illustration -->
+          <ellipse cx="180" cy="255" rx="130" ry="14" fill="rgba(26,23,20,0.1)"/>
+          <!-- Sole -->
+          <path d="M55 228 Q70 242 180 245 Q290 242 310 228 L305 218 Q240 232 180 232 Q115 232 60 218 Z" fill="#3D3530"/>
+          <!-- Boot shaft -->
+          <path d="M105 80 L100 222 Q140 228 180 228 Q220 228 265 222 L260 80 Q240 72 220 70 L175 68 Q145 68 120 72 Z" fill="#8B7355"/>
+          <!-- Boot front toe -->
+          <path d="M100 222 Q95 205 110 188 Q135 172 180 170 Q225 172 250 188 Q265 205 265 222 Z" fill="#A08060"/>
+          <!-- Ankle detail -->
+          <path d="M105 155 Q140 148 180 148 Q220 148 260 155" stroke="#6B5840" stroke-width="2.5" fill="none"/>
+          <!-- Stitching -->
+          <path d="M120 200 Q155 192 180 192 Q205 192 245 200" stroke="#C4A882" stroke-width="1.5" fill="none" stroke-dasharray="5,4"/>
+          <!-- Buckle detail -->
+          <rect x="158" y="138" width="48" height="20" rx="4" fill="#C8A870" stroke="#A08048" stroke-width="1.5"/>
+          <rect x="168" y="143" width="28" height="10" rx="2" fill="#B09060"/>
+          <line x1="182" y1="143" x2="182" y2="153" stroke="#C8A870" stroke-width="2"/>
+          <!-- Brand text -->
+          <text x="180" y="215" font-family="Georgia,serif" font-style="italic" font-size="11" fill="rgba(100,80,50,0.6)" text-anchor="middle" letter-spacing="2">STRÏDE</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="about-text reveal">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">Shoes That<br />Last a Lifetime</h2>
+      <p>
+        STRÏDE was born in a small atelier in Porto, Portugal, where <strong>master cobblers have shaped leather</strong> for generations. We believe a shoe isn't fast fashion — it is a commitment. One that should age beautifully with you.
+      </p>
+      <p>
+        Every pair is hand-lasted on traditional wooden forms, stitched with waxed linen thread, and resoled free of charge after three years. Because craftsmanship shouldn't expire.
+      </p>
+      <ul class="feature-list">
+        <li>Full-grain leather uppers from Limerick tanneries</li>
+        <li>Cork & wool insoles for natural breathability</li>
+        <li>Goodyear-welted construction for easy resoling</li>
+        <li>Plant-based pigment dyes — no harsh chemicals</li>
+        <li>Each pair takes 14 hours to build by hand</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ───── COLLECTION ───── -->
+  <section id="collection">
+    <div class="collection-header">
+      <div>
+        <p class="section-label">AW 2026 Collection</p>
+        <h2 class="section-title">Made to Be<br />Worn, Not Stored</h2>
+      </div>
+      <p>Three silhouettes. One philosophy: shoes that earn their lines through use, not display.</p>
+    </div>
+
+    <div class="products-grid">
+      <!-- Card 1 -->
+      <div class="product-card reveal">
+        <div class="product-img">
+          <div class="product-badge">Bestseller</div>
+          <svg viewBox="0 0 320 220" width="280" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="160" cy="198" rx="125" ry="12" fill="rgba(0,0,0,0.2)"/>
+            <path d="M40 178 Q55 190 160 193 Q265 190 278 178 L272 168 Q210 180 160 180 Q105 180 48 168 Z" fill="#2A2420"/>
+            <path d="M48 168 Q105 180 160 180 Q215 180 272 168 Q220 160 160 162 Q100 160 48 168 Z" fill="#353028"/>
+            <path d="M52 168 Q60 120 90 100 Q118 82 148 80 L185 80 Q220 80 248 100 Q272 118 275 168 Z" fill="#6B8FA0"/>
+            <path d="M52 168 Q55 135 70 115 Q90 95 115 87 Q140 80 155 80 L155 130 Q120 128 95 138 Q72 148 58 162 Z" fill="#7DA0B5"/>
+            <path d="M155 80 L195 80 Q225 80 248 100 Q268 116 272 165 Q250 158 220 155 L155 158 Z" fill="#608898"/>
+            <path d="M148 80 Q160 74 178 74 Q195 74 202 80 L198 120 Q180 114 162 116 Z" fill="#7090A8"/>
+            <line x1="155" y1="88" x2="198" y2="88" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <line x1="154" y1="98" x2="198" y2="98" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <line x1="155" y1="108" x2="197" y2="108" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <path d="M228 115 Q255 118 265 140" stroke="#B5784A" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <text x="160" y="150" font-family="Georgia" font-style="italic" font-size="9" fill="rgba(255,255,255,0.3)" text-anchor="middle" letter-spacing="2">STRÏDE</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-name">The Aldgate</div>
+          <div class="product-sub">Oxford — Full-grain Slate</div>
+          <div class="product-footer">
+            <span class="product-price">₹12,499</span>
+            <button class="product-btn">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="product-card reveal">
+        <div class="product-img">
+          <div class="product-badge">New</div>
+          <svg viewBox="0 0 320 220" width="280" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="160" cy="198" rx="125" ry="12" fill="rgba(0,0,0,0.2)"/>
+            <path d="M42 178 Q58 190 160 193 Q265 190 278 178 L272 168 Q210 180 160 180 Q105 180 50 168 Z" fill="#2A2420"/>
+            <path d="M50 168 Q105 180 160 180 Q215 180 272 168 Q220 160 160 162 Q100 160 50 168 Z" fill="#353028"/>
+            <path d="M55 168 Q60 125 85 105 Q112 85 145 82 L188 82 Q222 82 248 105 Q270 125 272 168 Z" fill="#C8A870"/>
+            <path d="M55 168 Q58 140 72 120 Q92 98 118 90 Q142 83 158 82 L158 135 Q122 132 95 142 Q72 152 60 164 Z" fill="#D4B880"/>
+            <path d="M158 82 L192 82 Q225 82 248 105 Q268 122 272 165 Q250 158 222 155 L158 158 Z" fill="#BF9860"/>
+            <path d="M145 82 Q158 76 175 76 Q192 76 200 82 L196 125 Q178 119 160 120 Z" fill="#CCA872"/>
+            <line x1="152" y1="90" x2="198" y2="90" stroke="#8B6840" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="152" y1="100" x2="196" y2="100" stroke="#8B6840" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="153" y1="110" x2="196" y2="110" stroke="#8B6840" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="154" y1="120" x2="195" y2="121" stroke="#8B6840" stroke-width="2" stroke-linecap="round"/>
+            <path d="M90 148 Q120 140 145 138" stroke="#A07840" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
+            <path d="M230 118 Q255 122 265 142" stroke="#B5784A" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <text x="160" y="150" font-family="Georgia" font-style="italic" font-size="9" fill="rgba(100,70,30,0.4)" text-anchor="middle" letter-spacing="2">STRÏDE</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-name">The Portman</div>
+          <div class="product-sub">Derby — Cognac Tan Leather</div>
+          <div class="product-footer">
+            <span class="product-price">₹14,999</span>
+            <button class="product-btn">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="product-card reveal">
+        <div class="product-img">
+          <svg viewBox="0 0 320 220" width="280" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="160" cy="198" rx="125" ry="12" fill="rgba(0,0,0,0.2)"/>
+            <path d="M42 178 Q58 190 160 193 Q265 190 278 178 L272 168 Q210 180 160 180 Q105 180 50 168 Z" fill="#2A2420"/>
+            <path d="M50 168 Q105 180 160 180 Q215 180 272 168 Q220 160 160 162 Q100 160 50 168 Z" fill="#353028"/>
+            <path d="M60 168 Q62 115 95 92 Q125 72 160 70 Q195 70 228 92 Q262 115 265 168 Z" fill="#4A3F36"/>
+            <path d="M60 168 Q64 135 80 112 Q102 88 130 78 Q150 70 162 70 L162 168 Z" fill="#554840"/>
+            <path d="M162 70 Q195 70 225 92 Q260 115 265 168 L162 168 Z" fill="#453830"/>
+            <path d="M140 70 Q160 62 180 70 L178 105 Q162 100 145 102 Z" fill="#5A4E45"/>
+            <path d="M60 168 Q62 140 75 120 Q98 95 130 85" stroke="#6B5C52" stroke-width="2" fill="none"/>
+            <line x1="148" y1="78" x2="178" y2="78" stroke="#8B7060" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <line x1="146" y1="88" x2="178" y2="88" stroke="#8B7060" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <line x1="147" y1="98" x2="178" y2="98" stroke="#8B7060" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+            <!-- Chelsea boot side elastic -->
+            <ellipse cx="88" cy="128" rx="18" ry="26" fill="#3D3530" opacity="0.5"/>
+            <ellipse cx="238" cy="128" rx="18" ry="26" fill="#3D3530" opacity="0.4"/>
+            <path d="M228 118 Q255 122 262 142" stroke="#B5784A" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <text x="160" y="148" font-family="Georgia" font-style="italic" font-size="9" fill="rgba(200,180,160,0.25)" text-anchor="middle" letter-spacing="2">STRÏDE</text>
+          </svg>
+        </div>
+        <div class="product-info">
+          <div class="product-name">The Kensington</div>
+          <div class="product-sub">Chelsea Boot — Dark Walnut</div>
+          <div class="product-footer">
+            <span class="product-price">₹17,499</span>
+            <button class="product-btn">Add to Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── CRAFT ───── -->
+  <section id="craft">
+    <div class="reveal">
+      <p class="section-label">The Making</p>
+      <h2 class="section-title">Every Pair Is<br />a Week's Work</h2>
+      <div class="craft-steps">
+        <div class="craft-step">
+          <div class="step-num">I</div>
+          <div class="step-content">
+            <h4>Pattern & Cutting</h4>
+            <p>We cut each upper by hand from a single hide, reading the grain for strength and beauty before committing scissors to leather.</p>
+          </div>
+        </div>
+        <div class="craft-step">
+          <div class="step-num">II</div>
+          <div class="step-content">
+            <h4>Lasting & Welting</h4>
+            <p>Uppers are pulled over a wooden last and Goodyear-welted — a double row of stitching that outlasts the leather itself.</p>
+          </div>
+        </div>
+        <div class="craft-step">
+          <div class="step-num">III</div>
+          <div class="step-content">
+            <h4>Sole Construction</h4>
+            <p>Cork fillers and rubber soles are hand-pressed and edge-finished on a spinning wheel, then burnished to a mirror edge.</p>
+          </div>
+        </div>
+        <div class="craft-step">
+          <div class="step-num">IV</div>
+          <div class="step-content">
+            <h4>Finishing & Quality</h4>
+            <p>Each pair is hand-finished with natural wax, inspected against 48-point quality criteria, and rested for 24 hours before boxing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="craft-visual reveal">
+      <svg viewBox="0 0 360 400" width="320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cobbler's last tool -->
+        <ellipse cx="180" cy="370" rx="120" ry="14" fill="rgba(26,23,20,0.12)"/>
+        <!-- Last body -->
+        <path d="M130 340 Q120 300 125 240 Q130 180 145 140 Q158 105 175 90 Q188 78 200 80 Q220 82 232 105 Q245 135 248 185 Q252 240 248 300 Q244 335 235 345 Z" fill="#8B6B4A"/>
+        <path d="M130 340 Q138 310 140 265 Q142 215 148 175 Q158 135 175 118 L175 90 Q188 78 200 80 Q220 82 232 105 Q215 100 198 105 Q180 110 165 135 Q150 162 148 200 Q146 248 148 295 Q150 325 158 348 Z" fill="#9A7A58"/>
+        <!-- Last heel -->
+        <path d="M130 340 L235 345 Q240 355 238 365 Q236 372 228 374 Q210 378 180 375 Q152 372 138 368 Q132 364 130 355 Z" fill="#7A5C3A"/>
+        <!-- Metal tip detail -->
+        <ellipse cx="180" cy="92" rx="22" ry="12" fill="#5A4A3A"/>
+        <ellipse cx="180" cy="90" rx="20" ry="10" fill="#6B5A48"/>
+        <!-- Grain lines -->
+        <path d="M145 200 Q168 195 200 198 Q220 200 238 205" stroke="rgba(100,70,40,0.3)" stroke-width="1" fill="none"/>
+        <path d="M143 230 Q168 225 202 228 Q222 230 240 235" stroke="rgba(100,70,40,0.3)" stroke-width="1" fill="none"/>
+        <path d="M140 265 Q168 260 205 262 Q225 264 244 268" stroke="rgba(100,70,40,0.3)" stroke-width="1" fill="none"/>
+      </svg>
+
+      <div class="craft-quote">
+        <blockquote>"A well-made shoe is the most honest thing a craftsman can put their name to."</blockquote>
+        <cite>— António Silva, Master Cordwainer, STRÏDE Atelier, Porto</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── TESTIMONIALS ───── -->
+  <section id="testimonials">
+    <p class="section-label">Worn & Loved</p>
+    <h2 class="section-title">What Our Customers Say</h2>
+
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I've owned my Portmans for four years. They've walked cobblestones in Prague and boardrooms in Mumbai — and they still look as though they were made yesterday."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div>
+            <div class="testi-name">Rohit Mehta</div>
+            <div class="testi-loc">Mumbai, India</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The resoling service is unbelievable. Three years in, I sent them back, paid nothing, and received shoes that felt brand new. A company that actually stands behind their craft."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div>
+            <div class="testi-name">Priya Nair</div>
+            <div class="testi-loc">Bengaluru, India</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I wear the Kensingtons almost every day from October to March. The leather has developed a patina I couldn't design if I tried. They only get better."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Aryan Kapoor</div>
+            <div class="testi-loc">New Delhi, India</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── NEWSLETTER ───── -->
+  <section id="newsletter">
+    <p class="section-label">Stay Close</p>
+    <h2 class="section-title">New Drops. No Noise.</h2>
+    <p>Seasonal launches, care guides, and the occasional cobbler's secret — delivered monthly.</p>
+    <div class="email-form">
+      <input type="email" placeholder="your@email.com" aria-label="Email address" />
+      <button type="button">Subscribe</button>
+    </div>
+  </section>
+
+  <!-- ───── FOOTER ───── -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="color:#F7F4EE;">STRÏ<span>DE</span></a>
+        <p>Handcrafted in Porto, Portugal since 2010. Every pair built to outlast the decade it was made in.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul>
+          <li><a href="#collection">New Arrivals</a></li>
+          <li><a href="#collection">Oxfords</a></li>
+          <li><a href="#collection">Derby</a></li>
+          <li><a href="#collection">Chelsea Boots</a></li>
+          <li><a href="#collection">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Craft</h5>
+        <ul>
+          <li><a href="#craft">Our Process</a></li>
+          <li><a href="#about">Materials</a></li>
+          <li><a href="#craft">The Atelier</a></li>
+          <li><a href="#">Care Guide</a></li>
+          <li><a href="#">Resole Programme</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul>
+          <li><a href="#">Sizing Guide</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="sitemap.xml">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 STRÏDE Footwear Ltd. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+
+    // Nav background on scroll
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 60
+        ? 'rgba(247,244,238,0.97)'
+        : 'rgba(247,244,238,0.88)';
+    });
+
+    // Email form
+    document.querySelector('.email-form button').addEventListener('click', function() {
+      const input = document.querySelector('.email-form input');
+      if (input.value && input.value.includes('@')) {
+        this.textContent = 'Subscribed ✓';
+        this.style.background = '#4A7A50';
+        input.value = '';
+        input.placeholder = 'Thank you!';
+      }
+    });
+  </script>
+</body>
+</html>
